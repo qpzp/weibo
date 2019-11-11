@@ -8,6 +8,9 @@
       <li class="nav-item">
         <a href="#" class="nav-link">登录</a>
       </li>
+      <li class="nav-item">
+        <a href="{{route('signup')}}" class="nav-link">注册</a>
+      </li>
     </ul>
   </div>
 </nav>
