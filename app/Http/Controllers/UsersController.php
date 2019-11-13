@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    //构造函数
     public function __construct()
     {
         $this->middleware('auth', [
-            'except' => ['show', 'create', 'store']
+            'except' => ['show', 'create', 'store', 'index']
         ]);
 
         $this->middleware('guest', [
@@ -18,16 +19,26 @@ class UsersController extends Controller
         ]);
     }
 
+    //用户列表
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
+    }
+
+    //新建用户
     public function create()
     {
         return view('users.create');
     }
 
+    //用户中心
     public function show(User $user)
     {
         return view('users.show', compact('user'));
     }
 
+    //注册用户
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -46,12 +57,14 @@ class UsersController extends Controller
         return redirect()->route('users.show', [$user]);
     }
 
+    //编辑用户
     public function edit(User $user)
     {
         $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
+    //更新用户
     public function update(User $user, Request $request)
     {
         $this->authorize('update', $user);
