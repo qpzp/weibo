@@ -12,7 +12,6 @@ class StaticPagesController extends Controller
     {
         $feed_items = [];
         if (Auth::check()) {
-            var_dump(1);
             $feed_items = Auth::user()->feed()->paginate(30);
         }
 
