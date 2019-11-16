@@ -4,12 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use Auth;
-=======
-use Illuminate\Support\Facades\Auth;
 use Mail;
->>>>>>> account-activation-password-resets
+
 
 class UsersController extends Controller
 {
